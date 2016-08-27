@@ -11,8 +11,8 @@ Servo bottomServo;
 int topRestPos = 60; //position for servo to stand clear of switch
 int bottomRestPos =140;
 
-int topActivationPos = 115;  //position for servo to activate switch
-int bottomActivationPos = 80;
+int topActivationPos = 110;  //position for servo to activate switch
+int bottomActivationPos = 86;
 
 byte data;
 
@@ -24,6 +24,8 @@ void setup() {
 
   topServo.write(topRestPos); //send servos to rest postions
   bottomServo.write(bottomRestPos);
+  pinMode(9, OUTPUT);
+  analogWrite(9, 125);
 }
 
 void loop() {
@@ -33,21 +35,21 @@ void loop() {
     if (data == 49) {
 
     bottomServo.write(bottomRestPos);
-    delay(150);                       //delay a bit for safety
+    delay(50);                       //delay a bit for safety
     topServo.write(topActivationPos);    //activate switch from the bottom 
-    delay(750);                       // wait for the servo to move              
+    delay(600);                       // wait for the servo to move              
     topServo.write(topRestPos);   //return the top servo to rest position
-    delay(750);   //delay to prevent damage incase of quckly repeated signals
+    delay(600);   //delay to prevent damage incase of quckly repeated signals
     }
 
     else if (data == 48) {
       
       topServo.write(topRestPos);       //make sure top servo is out of the way
-      delay(150);   //delay a bit for safety
+      delay(50);   //delay a bit for safety
       bottomServo.write(bottomActivationPos);      //activate switch from the bottom
-      delay(750);        //wait for the servo to move              
+      delay(600);        //wait for the servo to move              
       bottomServo.write(bottomRestPos);   //return the bottom servo to rest position
-      delay(750);   //delay to prevent damage incase of quckly repeated signals
+      delay(600);   //delay to prevent damage incase of quckly repeated signals
     }
 
     else{
