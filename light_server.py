@@ -32,7 +32,7 @@ def bt_connect(address, channel):
             break
         except:
             btSocket.close()
-            print "Could not establish bluetooth connection: ", error, "; Retrying in 1s..."
+            print "Could not establish bluetooth connection: Retrying in 1s..."
             time.sleep(1)
     return btSocket
         
